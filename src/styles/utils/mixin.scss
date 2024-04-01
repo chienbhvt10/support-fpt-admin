@@ -1,0 +1,30 @@
+// Define breakpoints
+
+// Define mixin for responsive styles
+@mixin responsive($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}
+
+// Example usage
+
+// .container {
+//   width: 100%;
+
+//   @include responsive(phone) {
+//     width: 90%;
+//     margin: 0 auto;
+//   }
+
+//   @include responsive(tablet) {
+//     width: 80%;
+//     margin: 0 auto;
+//   }
+
+//   @include responsive(desktop) {
+//     width: 1200px;
+//     margin: 0 auto;
+//   }
+// }
