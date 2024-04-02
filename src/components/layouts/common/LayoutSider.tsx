@@ -1,4 +1,5 @@
 "use client";
+import { ROUTE_PATH } from "@/constants/path";
 import {
   AppstoreOutlined,
   ContainerOutlined,
@@ -7,8 +8,10 @@ import {
   PieChartOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Menu } from "antd";
+import { Flex, Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface LayoutSiderProps {
   collapsed: boolean;
@@ -37,9 +40,9 @@ const items: MenuItem[] = [
   getItem("Option 2", "2", <DesktopOutlined />),
   getItem("Option 3", "3", <ContainerOutlined />),
 
-  getItem("Users management", "User Management", <MailOutlined />, [
-    getItem("User", "5"),
-    getItem("Permission", "6"),
+  getItem("Users management", "user-management", <MailOutlined />, [
+    getItem("User", ROUTE_PATH.USERS),
+    getItem("Permission", ROUTE_PATH.PERMISSIONS),
     getItem("Option 7", "7"),
     getItem("Option 8", "8"),
   ]),
@@ -57,12 +60,31 @@ const items: MenuItem[] = [
 
 const LayoutSider = (props: LayoutSiderProps) => {
   const { collapsed } = props;
+  const route = useRouter();
 
   return (
     <Sider trigger={null} collapsible collapsed={collapsed} width={250}>
+      <Flex style={{ padding: 16 }}>
+        {!collapsed ? (
+          <Image
+            src="/images/fpt-logo.png"
+            alt="fpt logo"
+            width={220}
+            height={90}
+            objectFit="cover"
+          />
+        ) : (
+          <Image
+            src="/images/fpt-logo2.png"
+            alt="fpt logo2"
+            width={44}
+            height={30}
+            objectFit="cover"
+          />
+        )}
+      </Flex>
       <Menu
-        defaultSelectedKeys={["1"]}
-        defaultOpenKeys={["sub1"]}
+        onClick={(item) => route.push(item.key)}
         mode="inline"
         theme="dark"
         inlineCollapsed={collapsed}

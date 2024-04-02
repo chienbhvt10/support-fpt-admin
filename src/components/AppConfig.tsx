@@ -1,10 +1,10 @@
 "use client";
 import { store } from "@/redux/store";
-import "@/styles/main.scss";
 import { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 import ThemeConfig from "./ThemeConfig";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import "@/styles/main.scss";
 
 const AppConfig = ({ children }: PropsWithChildren) => {
   return (

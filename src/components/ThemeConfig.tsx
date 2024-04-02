@@ -12,6 +12,11 @@ const ThemeConfig = ({ children }: PropsWithChildren) => {
         token: {
           colorPrimary: theme.primary,
         },
+        components: {
+          Divider: {
+            margin: 0,
+          },
+        },
       }}
     >
       {children}

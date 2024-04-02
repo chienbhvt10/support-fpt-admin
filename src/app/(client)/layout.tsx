@@ -1,7 +1,8 @@
+import AuthLayout from "@/components/layouts/auth";
 import { FC, PropsWithChildren } from "react";
 
 const ClientLayout: FC<PropsWithChildren> = ({ children }) => {
-  return <div> Client layout{children}</div>;
+  return <AuthLayout> {children}</AuthLayout>;
 };
 
 export default ClientLayout;
